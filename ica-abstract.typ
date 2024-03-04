@@ -66,7 +66,9 @@
           } else { author.affiliations }
           for a in affiliations {
             if (a.id == i) {
-              let email = if a.keys().contains("email") { [ -- #a.email] } else { "" }
+              let email = if a.keys().contains("email") {
+                [ -- #link("mailto:" + a.email)]
+              } else { "" }
               acc.push([#author.name #email])
             }
           }
