@@ -96,7 +96,7 @@
 
   body
 
-  if (bibliography-file != "none") {
+  if (bibliography-file != none) {
       bibliography(
       bibliography-file,
       title: "References",
