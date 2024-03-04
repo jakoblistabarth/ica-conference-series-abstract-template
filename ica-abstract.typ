@@ -1,6 +1,10 @@
 #let ica-abstract(title: "", authors: (), affiliations: (), keywords: none, bibliography-file: none, body) = {
   // Set the document's basic properties.
-  set document(author: authors.first().name, title: title, keywords: keywords)
+  set document(
+    title: title,
+    author: authors.first().name,
+    keywords: if keywords != none { keywords} else { "" }
+  )
   set page(
     margin: (x: 20mm, top: 25mm, bottom: 28mm),
     header-ascent: 0%,
@@ -84,7 +88,9 @@
 
   line(length: 100%, stroke: 0.4pt)
 
-  pad(y: .5em, [*Keywords:* #keywords.join(", ")])
+  if keywords != none {
+    pad(y: .5em, [*Keywords:* #keywords.join(", ")])
+  }
 
   heading([Abstract:])
 
