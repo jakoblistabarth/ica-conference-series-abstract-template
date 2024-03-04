@@ -8,31 +8,31 @@
       name: "1st Author",
       affiliations: (
         id: 1,
-        email: "first.author@email.com",
+        email: "1st@email.com",
       ),
       corresponding: true,
     ),
     (
       name: "2nd Author",
       affiliations: (
-        id: 1, email: "second.author@email.com"
-      )
+        (id: 1, email: "2nd@email.com"),
+        (id: 2),
+      ),
     ),
     (
       name: "3rd Author",
       affiliations: (
-        (id: 1, email: "third.author@email.com"),
-        (id: 2),
+        (id: 1, email: "3rd@email.com"),
       )
     ),
     (
       name: "4th Author",
       affiliations: (
-        (id: 2, email: "fourth.author@email.com"),
+        (id: 2, email: "4th@email.com"),
       ),
     ),
   ),
-  affiliations: (("Affiliation A"), ("Affiliaton B"),),
+  affiliations: (("Affiliation"), ("Affiliation"),),
   keywords: ("guidelines", "formatting", "style", "Abstracts of the ICA"),
   bibliography-file: "ICAguidelines_bib.bib"
 )

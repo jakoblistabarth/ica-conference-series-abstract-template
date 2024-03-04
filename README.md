@@ -1,6 +1,9 @@
-# ICA abstracts template for typst
+# typst template for the ICA abstracts of the ICA conferences series
 
 This repo implements the official [ICA abstracts of the ICA conference series](https://www.abstracts-of-the-ica.net/) as [typst](https://typst.app/docs/) template. It is based in particular on the official [LaTeX Template](https://www.ica-conference-publications.net/ica_latex_template.html).
+
+> [!CAUTION]
+> The bibliography style (the way your citations in the text body and your references show up) differs (slightly) from the official LaTeX template.
 
 ## What is typst?
 > Typst is a new markup-based typesetting system that is designed to be as powerful as LaTeX while being much easier to learn and use.

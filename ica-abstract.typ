@@ -40,11 +40,12 @@
       #set text(size: 12pt)
       #authors.map(
         (author) => {
-          let affiliation = "a"
-          let corresponding-indicator = if (
+          let affiliations = if (type(author.affiliations) != array) { (author.affiliations,)
+          } else {author.affiliations}
+          let corresponding-mark = if (
             author.keys().contains("corresponding") and author.corresponding == true
           ) { "*" } else { none }
-          return [#author.name #super(affiliation)#corresponding-indicator]
+          return [#author.name #super(affiliations.map((d) => {numbering("a", d.id)}).join(", "))#corresponding-mark]
         },
       ).join(", ")
     ],
@@ -52,13 +53,34 @@
 
   pad(
     y: .25em,
-    [
-      #set text(style: "italic")
-      #affiliations.map((afilliation) => { return [#afilliation] }).join(", ")
-    ],
+    {
+      set text(style: "italic", size: 9pt)
+      for (i, affiliation) in affiliations.enumerate(start: 1) {
+        let affiliation-authors = authors.fold((), (acc, author) => {
+          let affiliations = if type(author.affiliations) != array {
+            (author.affiliations,)
+          } else { author.affiliations }
+          for a in affiliations {
+            if (a.id == i) {
+              let email = if a.keys().contains("email") { [ -- #a.email] } else { "" }
+              acc.push([#author.name #email])
+            }
+          }
+          acc
+        })
+        block(
+          spacing: .5em,
+          [
+            #super(numbering("a", i))
+            #affiliation#if affiliation-authors != none {
+              [, #affiliation-authors.join(", ")]}
+          ]
+        )
+      }
+    },
   )
 
-  [\* Corresponding author]
+  text(size: 9pt, [\* Corresponding author])
 
   line(length: 100%, stroke: 0.4pt)
 
