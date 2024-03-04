@@ -6,19 +6,40 @@
   authors: (
     (
       name: "1st Author",
-      affiliation: 1,
+      affiliations: (
+        id: 1,
+        email: "first.author@email.com",
+      ),
       corresponding: true,
-      email: "first.author@email.com",
     ),
-    (name: "2nd Author", affiliation: 1, email: "second.author@email.com"),
+    (
+      name: "2nd Author",
+      affiliations: (
+        id: 1, email: "second.author@email.com"
+      )
+    ),
+    (
+      name: "3rd Author",
+      affiliations: (
+        (id: 1, email: "third.author@email.com"),
+        (id: 2),
+      )
+    ),
+    (
+      name: "4th Author",
+      affiliations: (
+        (id: 2, email: "fourth.author@email.com"),
+      ),
+    ),
   ),
-  affiliations: (("Affiliation A"),),
+  affiliations: (("Affiliation A"), ("Affiliaton B"),),
   keywords: ("guidelines", "formatting", "style", "Abstracts of the ICA"),
+  bibliography-file: "ICAguidelines_bib.bib"
 )
 
 These are ICA guidelines for submitting abstracts to supplement ICA guidelines for preparation of papers. All abstracts for abstract-only submission to ICA-events must follow these guidelines and be written using this template. The ICA-event organizers may omit any paper that does not conform to the specified requirements.
 
-An abstract for abstract-only submission must be *within maximum 2 pages*, single-spaced, A4 size (297 #sym.times 210mm / 11.69 #sym.times 8.27 inches). The font type Times New Roman with a size of ten (10) points is to be used. Use of paragraphing is encouraged. Section headings should not be used. Although full references are not expected, it is permitted to cite others' works with author and date information #cite(<AAS92>, form: "prose"), #cite(<AHNFRE84>, form: "prose"), #cite(<WERDER2010>, form: "prose"). References should be listed in alphabetical order in the reference section.
+An abstract for abstract-only submission must be *within maximum 2 pages*, single-spaced, A4 size (297 #sym.times 210mm / 11.69 #sym.times 8.27 inches). The font type Times New Roman with a size of ten (10) points is to be used. Use of paragraphing is encouraged. Section headings should not be used. Although full references are not expected, it is permitted to cite others' works with author and date information, e.g. #cite(<AAS92>, form: "prose"), #cite(<AHNFRE84>, form: "prose"), #cite(<WERDER2010>, form: "prose"). References should be listed in alphabetical order in the reference section.
 
 #figure(
   image("ica-logo.svg", width: 40%),
@@ -31,17 +52,20 @@ Tables and figures may be used. When using tables or figures, captions should be
   tablex(
     columns: 3,
     auto-hlines: false,
-    row-gutter: 0mm,
-    gutter: 0mm,
-    hlinex(),
+    map-vlines: v => (..v, stroke: .5pt),
+    map-cells: cell => {
+      (..cell, inset: (x: 6pt, y: .3em))
+    },
+    align: (left, center, center),
+    hlinex(stroke: .5pt),
     [Setting], colspanx(2)[A4 size paper],
-    hlinex(),
+    hlinex(stroke: .5pt),
     [], [mm], [inches],
     [Top], [25], [1.0],
     [Bottom], [28], [1.1],
     [Left], [20], [0.8],
     [Right], [20], [0.8],
-    hlinex(),
+    hlinex(stroke: .5pt),
   ),
   caption: [Margin settings for A4 size paper]
 )
@@ -51,14 +75,6 @@ The Abstracts of the International Cartographic Association (Abstracts of the IC
 Abstracts are intended to present very early or practical work. They provide a platform for artwork, demonstrations, or work of practitioners - work that would otherwise not be very well suited for a description in an extended scientific paper. Still, the publication of the abstract is very valuable both for the authors and for the participants of the meeting. Abstracts are reviewed based on quality and innovativeness, as well as on the practical relevance.
 
 // optional
-*Acknowledgements*
+= Acknowledgements
 
 Acknowledgements of support for the project / paper / author are welcome.
-
-// optional
-#bibliography(
-  "ICAguidelines_bib.bib",
-  title: "References",
-  // Not exactly right yet, perhaps create a custom style? see https://github.com/citation-style-language
-  style: "elsevier-harvard",
-)
