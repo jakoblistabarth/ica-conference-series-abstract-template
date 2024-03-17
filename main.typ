@@ -1,5 +1,4 @@
 #import "ica-abstract.typ": *
-#import "@preview/tablex:0.0.8": tablex, colspanx, hlinex
 
 #show: ica-abstract.with(
   title: "Guidelines for authors preparing manuscripts for publication in the Abstracts of the ICA conference series (Title of paper)",
@@ -49,23 +48,22 @@ An abstract for abstract-only submission must be *within maximum 2 pages*, singl
 Tables and figures may be used. When using tables or figures, captions should be used, centered directly beneath the tables or figures. All captions are to be numbered consecutively, e.g. Figure 1, Table 2, Figure 2.
 
 #figure(
-  tablex(
+  table(
     columns: 3,
-    auto-hlines: false,
-    map-vlines: v => (..v, stroke: .5pt),
-    map-cells: cell => {
-      (..cell, inset: (x: 6pt, y: .3em))
-    },
+    stroke: (x: 0.5pt, y: none),
+    inset: (y: 3pt),
     align: (left, center, center),
-    hlinex(stroke: .5pt),
-    [Setting], colspanx(2)[A4 size paper],
-    hlinex(stroke: .5pt),
+    table.header(
+      table.hline(y: 0, stroke: 0.5pt),
+      table.hline(y: 1, stroke: 0.5pt),
+      table.hline(y: 6, stroke: 0.5pt),
+      [Setting], table.cell(colspan: 2)[A4 size paper],
+    ),
     [], [mm], [inches],
     [Top], [25], [1.0],
     [Bottom], [28], [1.1],
     [Left], [20], [0.8],
     [Right], [20], [0.8],
-    hlinex(stroke: .5pt),
   ),
   caption: [Margin settings for A4 size paper]
 )
