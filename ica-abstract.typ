@@ -24,6 +24,7 @@
   let base-font-size = 10pt
 
   set text(font: ("Times New Roman"), size: base-font-size, lang: "en")
+  show par: set block(spacing: 1.4em)
   set par(justify: true, leading: .5em)
 
   show heading: it => {
@@ -97,6 +98,11 @@
   heading([Abstract:])
 
   body
+
+  show bibliography: it => {
+    set block(spacing: .8em)
+    it
+  }
 
   if (bibliography-file != none) {
       bibliography(
